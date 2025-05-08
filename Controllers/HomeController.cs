@@ -15,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        if (Juego.finalizo)
+        if (!Juego.finalizo)
         {
             Juego.IniciarNuevoJuego();
         }
