@@ -15,6 +15,21 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        if (Juego.finalizo)
+        {
+            Juego.IniciarNuevoJuego();
+        }
         return View();
+    }
+
+    [HttpPost]
+    public IActionResult AdivinarLetra(char letra)
+    {
+        if (!Juego.finalizo)
+        {
+            Juego.AdivinarLetra(letra);
+        }
+            
+        return RedirectToAction("Index");
     }
 }

@@ -3,6 +3,31 @@
 }
 
 <div>
-    <h1>Index</h1>
-    <p>Bienvenidos al sitio web de NombreProyecto</p>
+    <h3>Palabra Mostrada: @TP04.Models.Juego.palabraMostrada</h3>
+    <h4>Intentos Restantes: @TP04.Models.Juego.intentosRestantes</h4>
 </div>
+
+@if (TP04.Models.Juego.finalizo)
+{
+    <div>
+        @if (TP04.Models.Juego.gano)
+        {
+            <h4>¡Felicidades, has ganado!</h4>
+        }
+        else
+        {
+            <h4>Lo siento, has perdido. La palabra secreta era: @TP04.Models.Juego.palabraSecreta</h4>
+        }
+    </div>
+}
+else
+{
+    <form asp-action="AdivinarLetra" method="post">
+        <label for="letra">Adivina una letra:</label>
+        <input type="text" id="letra" name="letra" maxlength="1" required />
+        <button type="submit">Adivinar</button>
+    </form>
+}
+
+<br />
+<a href="@Url.Action("Index", "Juego")">Reiniciar juego</a>
