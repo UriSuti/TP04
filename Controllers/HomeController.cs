@@ -27,9 +27,19 @@ public class HomeController : Controller
     {
         if (!Juego.finalizo)
         {
-            Juego.AdivinarLetra(letra);
+            ViewBag.codigo = Juego.AdivinarLetra(letra);
         }
             
-        return RedirectToAction("Index");
+        return View("Index");
+    }
+
+    [HttpPost]
+    public IActionResult AdivinarPalabra(string palabra)
+    {
+        if (!Juego.finalizo)
+        {
+            ViewBag.codigo = Juego.AdivinarPalabra(palabra);
+        }
+        return View("Index");
     }
 }

@@ -18,16 +18,34 @@
         {
             <h4>Perdiste. La palabra secreta era: @Juego.palabraSecreta</h4>
         }
+
     </div>
 }
 else
 {
-    <form asp-action="AdivinarLetra" method="post">
+    <form action='@Url.Action("AdivinarLetra", "Home")' method="POST" enctype="multipart/form-data">
         <label for="letra">Adivina una letra:</label>
-        <input type="text" id="letra" name="letra" maxlength="1" />
+        <input type="text" id="letra" name="letra" maxlenght="1"/>
         <button type="submit">Adivinar</button>
     </form>
+    
+    <form action='@Url.Action("AdivinarPalabra", "Home")' method="POST" enctype="multipart/form-data">
+        <label for="letra">Adivina la palabra:</label>
+        <input type="text" id="letra" name="letra"/>
+        <button type="submit">Adivinar</button>
+    </form>
+
+    @if(ViewBag.codigo == 1){
+        <h2>La palabra contiene esa letra</h2>
+    }
+    else if(ViewBag.codigo == 2){
+        <h2>La palabra no contiene esa letra</h2>   
+    }
+    else if(ViewBag.codigo == 3){
+        <h2>Esa letra ya fue puesta</h2>   
+    }
+
 }
 
 <br />
-<a href="@Url.Action("Index", "Home")">Reiniciar juego</a>
+<a href='@Url.Action("Index", "Home")'>Reiniciar juego</a>

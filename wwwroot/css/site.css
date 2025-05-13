@@ -1,23 +1,86 @@
-html {
-  font-size: 14px;
-  min-height: 100%;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
 body {
-  margin: 10px;
-  padding: 10px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+div {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  margin-right: 15%;
+}
 
-footer {
-  margin-top: 10px;
+h3, h4 {
+  color: #333;
+  text-align: center;
+}
+
+h4 {
+  font-size: 24px;
+  color: #d9534f;
+}
+
+h4.gano {
+  color: #5bc0de;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+input[type="text"] {
+  font-size: 18px;
   padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 50%;
+  text-align: center;
+}
+
+button[type="submit"] {
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #31b0d5;
+}
+
+h2 {
+  text-align: center;
+  font-size: 18px;
+  color: #d9534f;
+}
+
+a {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+  color: #5bc0de;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
