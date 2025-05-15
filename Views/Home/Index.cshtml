@@ -25,13 +25,13 @@ else
 {
     <form action='@Url.Action("AdivinarLetra", "Home")' method="POST" enctype="multipart/form-data">
         <label for="letra">Adivina una letra:</label>
-        <input type="text" id="letra" name="letra" maxlenght="1"/>
+        <input type="text" id="letra" name="letra" maxlength="1"/>
         <button type="submit">Adivinar</button>
     </form>
     
     <form action='@Url.Action("AdivinarPalabra", "Home")' method="POST" enctype="multipart/form-data">
         <label for="letra">Adivina la palabra:</label>
-        <input type="text" id="letra" name="letra"/>
+        <input type="text" id="palabra" name="palabra"/>
         <button type="submit">Adivinar</button>
     </form>
 
@@ -43,6 +43,16 @@ else
     }
     else if(ViewBag.codigo == 3){
         <h2>Esa letra ya fue puesta</h2>   
+    }
+
+    @if(ViewBag.palabra == 1){
+        <h2>Efectivamente, la palabra es @Juego.palabraSecreta</h2>
+    }
+    else if(ViewBag.palabra == 2){
+        <h2>Esa palabra ya fue arriesgada</h2>
+    }
+    else if(ViewBag.palabra == 3){
+        <h2>La palabra no es esa</h2>
     }
 
 }

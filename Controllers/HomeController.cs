@@ -1,3 +1,4 @@
+
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP04.Models;
@@ -38,7 +39,7 @@ public class HomeController : Controller
     {
         if (!Juego.finalizo)
         {
-            ViewBag.codigo = Juego.AdivinarPalabra(palabra);
+            ViewBag.palabra = Juego.AdivinarPalabra(palabra);
         }
         return View("Index");
     }

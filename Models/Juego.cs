@@ -29,6 +29,7 @@ public class Juego
         palabraMostrada = new string('_', palabraSecreta.Length);
         intentosRestantes = 6;
         letrasAdivinadas.Clear();
+        palabrasJugadas = new List<string>();
         letrasJugadas = new List<char>();
         finalizo = false;
         gano = false;
@@ -36,8 +37,6 @@ public class Juego
 
     public static int AdivinarLetra(char letra)
     {
-        if (finalizo) return 4;
-
         if (palabraSecreta.Contains(letra))
         {
             letrasAdivinadas.Add(letra);
@@ -83,25 +82,24 @@ public class Juego
     }
 
     public static int AdivinarPalabra(string palabra)
-    {
-        if (finalizo) return 4;
-
+    {   
+        
         if (palabraSecreta == palabra)
         {
-            ActualizarPalabraMostrada();
-            return 1;
+            return 1; //Adivinó
         }
-        else if(palabrasJugadas.Contains(palabra) == false)
+        else if(palabrasJugadas.Contains(palabra))
         {
-            intentosRestantes--;
+            return 2; //Ya jugó esa palabra
+        }
+        else{
+            intentosRestantes -= 2;
             if (intentosRestantes <= 0)
             {
                 finalizo = true;
             }
-            return 2;
-        }
-        else{
-            return 3;
+            palabrasJugadas.Add(palabra);
+            return 3; //Esa palabra esta mal
         }
     }
 }
