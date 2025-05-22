@@ -16,31 +16,44 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        if (!Juego.finalizo)
-        {
-            Juego.IniciarNuevoJuego();
-        }
+        Juego juego = new Juego(); 
+        HttpContext.Session.SetString("juegos", Objeto.ObjectToString(juego));
+        ViewBag.Juego = juego;
         return View();
     }
 
     [HttpPost]
     public IActionResult AdivinarLetra(char letra)
     {
-        if (!Juego.finalizo)
+
+        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juegos"));
+        if (juego is not null)
         {
-            ViewBag.codigo = Juego.AdivinarLetra(letra);
+            if (!juego.finalizo)
+            {
+                ViewBag.codigo = juego.AdivinarLetra(letra);
+                HttpContext.Session.SetString("juegos", Objeto.ObjectToString(juego));
+            }
         }
-            
+        
+        ViewBag.Juego = juego;
         return View("Index");
     }
 
     [HttpPost]
     public IActionResult AdivinarPalabra(string palabra)
     {
-        if (!Juego.finalizo)
+        Juego juego = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("juegos"));
+        if (juego is not null)
         {
-            ViewBag.palabra = Juego.AdivinarPalabra(palabra);
+            if (!juego.finalizo)
+            {
+                ViewBag.palabra = juego.AdivinarPalabra(palabra.ToLower());
+                HttpContext.Session.SetString("juegos", Objeto.ObjectToString(juego));
+            }
         }
+        
+        ViewBag.Juego = juego;
         return View("Index");
     }
 }

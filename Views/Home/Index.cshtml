@@ -3,20 +3,20 @@
 }
 
 <div>
-    <h3>Palabra Mostrada: @Juego.palabraMostrada</h3>
-    <h4>Intentos Restantes: @Juego.intentosRestantes</h4>
+    <h3>Palabra Mostrada: @ViewBag.Juego.palabraMostrada</h3>
+    <h4>Intentos Restantes: @ViewBag.Juego.intentosRestantes</h4>
 </div>
 
-@if (Juego.finalizo)
+@if (ViewBag.Juego.finalizo)
 {
     <div>
-        @if (Juego.gano)
+        @if (ViewBag.Juego.gano)
         {
             <h4>¡Felicidades, has ganado!</h4>
         }
         else
         {
-            <h4>Perdiste. La palabra secreta era: @Juego.palabraSecreta</h4>
+            <h4>Perdiste. La palabra secreta era: @ViewBag.juego.palabraSecreta</h4>
         }
 
     </div>
@@ -46,7 +46,7 @@ else
     }
 
     @if(ViewBag.palabra == 1){
-        <h2>Efectivamente, la palabra es @Juego.palabraSecreta</h2>
+        <h2>Efectivamente, la palabra es @ViewBag.juego.palabraSecreta</h2>
     }
     else if(ViewBag.palabra == 2){
         <h2>Esa palabra ya fue arriesgada</h2>

@@ -2,15 +2,15 @@ namespace TP04.Models;
 
 public class Juego
 {
-    public static string palabraSecreta { get; private set; }
-    public static string palabraMostrada { get; private set; }
-    public static int intentosRestantes { get; private set; }
-    public static List<char> letrasAdivinadas { get; private set; }
-    public static bool finalizo { get; private set; }
-    public static bool gano { get; private set; }
-    public static List<char> letrasJugadas { get; private set; }
-    public static List<string> palabrasJugadas { get; private set; }
-    private static List<string> palabras = new List<string>
+    public string palabraSecreta { get; private set; }
+    public string palabraMostrada { get; private set; }
+    public int intentosRestantes { get; private set; }
+    public List<char> letrasAdivinadas { get; private set; }
+    public bool finalizo { get; private set; }
+    public bool gano { get; private set; }
+    public List<char> letrasJugadas { get; private set; }
+    public List<string> palabrasJugadas { get; private set; }
+    private List<string> palabras = new List<string>
     {
         "elefante",
         "computadora",
@@ -20,7 +20,7 @@ public class Juego
         "bicicleta"
     };
 
-    public static void IniciarNuevoJuego()
+    public Juego()
     {
         letrasAdivinadas = new List<char>();
         Random random = new Random();
@@ -35,9 +35,9 @@ public class Juego
         gano = false;
     }
 
-    public static int AdivinarLetra(char letra)
+    public int AdivinarLetra(char letra)
     {
-        if (palabraSecreta.Contains(letra))
+        if (palabraSecreta.Contains(char.ToLower(letra)))
         {
             letrasAdivinadas.Add(letra);
             ActualizarPalabraMostrada();
@@ -60,7 +60,7 @@ public class Juego
         }
     }
 
-    private static void ActualizarPalabraMostrada()
+    private void ActualizarPalabraMostrada()
     {
         string nuevaPalabraMostrada = "";
         
@@ -81,7 +81,7 @@ public class Juego
         finalizo = gano || intentosRestantes <= 0;
     }
 
-    public static int AdivinarPalabra(string palabra)
+    public int AdivinarPalabra(string palabra)
     {   
         
         if (palabraSecreta == palabra)
